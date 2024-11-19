@@ -1,21 +1,30 @@
-import { Link } from "react-router-dom"
-import { FcGoogle } from "react-icons/fc"
-import { FaApple } from "react-icons/fa6"
-
+import { Link } from "react-router-dom";
+import { FcGoogle } from "react-icons/fc";
+import { FaApple } from "react-icons/fa6";
+import { useState } from "react";
 
 const Login = () => {
+  const [state, setState] = useState({
+    email: "",
+    password: "",
+  });
+
+  const inputHandler = (e) => {
+    setState({ ...state, [e.target.name]: e.target.value });
+  };
+
+  const submitHandler = (e) => {
+    e.preventDefault();
+    console.log(state);
+  };
   return (
     <div className="min-w-screen min-h-screen bg-soap flex justify-center items-center">
       <div className="w-[350px]  text-white p-2">
         <div className="bg-violetBlue p-4 rounded-md">
           <h2 className="text-xl mb-3 font-bold">Welcome to our platform</h2>
-          <p className="text-sm mb-3 font-medium">
-            Please login to continue
-          </p>
+          <p className="text-sm mb-3 font-medium">Please login to continue</p>
 
-          <form>
-            
-
+          <form onSubmit={submitHandler}>
             <div className="flex flex-col w-full gap-1 mb-3">
               <label htmlFor="email">Email</label>
               <input
@@ -25,6 +34,8 @@ const Login = () => {
                 name="email"
                 placeholder="Enter your email"
                 required
+                onChange={inputHandler}
+                value={state.email}
               />
             </div>
 
@@ -37,10 +48,11 @@ const Login = () => {
                 name="password"
                 placeholder="Enter your password"
                 required
+                onChange={inputHandler}
+                value={state.password}
               />
             </div>
 
-            
             <button className="w-full p-2 rounded-md bg-slate-800 text-white font-medium hover:shadow-blue-300 hover:shadow-lg px-7 py-2 mb-3">
               Sign In
             </button>
@@ -78,7 +90,7 @@ const Login = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Login
+export default Login;

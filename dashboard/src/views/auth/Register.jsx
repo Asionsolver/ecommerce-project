@@ -1,7 +1,22 @@
 import { Link } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 import { FaApple } from "react-icons/fa6";
+import { useState } from "react";
 const Register = () => {
+  const [state, setState] = useState({
+    name: "",
+    email: "",
+    password: "",
+  });
+
+  const inputHandler = (e) => {
+    setState({ ...state, [e.target.name]: e.target.value });
+  };
+
+  const submitHandler = (e) => {
+    e.preventDefault();
+    console.log(state);
+  };
   return (
     <div className="min-w-screen min-h-screen bg-soap flex justify-center items-center">
       <div className="w-[350px]  text-white p-2">
@@ -11,7 +26,7 @@ const Register = () => {
             Please register to continue
           </p>
 
-          <form>
+          <form onSubmit={submitHandler}>
             <div className="flex flex-col w-full gap-1 mb-3">
               <label htmlFor="name">Name</label>
               <input
@@ -21,6 +36,8 @@ const Register = () => {
                 name="name"
                 placeholder="Enter your name"
                 required
+                onChange={inputHandler}
+                value={state.name}
               />
             </div>
 
@@ -33,6 +50,8 @@ const Register = () => {
                 name="email"
                 placeholder="Enter your email"
                 required
+                onChange={inputHandler}
+                value={state.email}
               />
             </div>
 
@@ -45,6 +64,8 @@ const Register = () => {
                 name="password"
                 placeholder="Enter your password"
                 required
+                onChange={inputHandler}
+                value={state.password}
               />
             </div>
 
