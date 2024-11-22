@@ -7,13 +7,14 @@ import store from "./store/index";
 import { Toaster } from "react-hot-toast";
 // import App from "./App";
 const App = lazy(() => import("./App"));
+
 createRoot(document.getElementById("root")).render(
   <BrowserRouter>
     <StrictMode>
       <Provider store={store}>
         <Suspense fallback={<div>Loading...</div>}>
           <App />
-          <Toaster 
+          <Toaster
             position="top-right"
             toastOptions={{
               duration: 5000,
