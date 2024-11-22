@@ -5,7 +5,7 @@ import PublicRoutes from "./router/routes/PublicRoutes";
 export default function App() {
   const [allRoutes, setAllRoutes] = useState([...PublicRoutes]);
 
-  console.log(allRoutes);
+  // console.log(allRoutes);
   return <Router allRoutes={allRoutes} />;
 
 

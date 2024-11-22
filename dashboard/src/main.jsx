@@ -15,9 +15,14 @@ createRoot(document.getElementById("root")).render(
         <Suspense fallback={<div>Loading...</div>}>
           <App />
           <Toaster
+            className=""
             position="top-right"
             toastOptions={{
               duration: 5000,
+            }}
+            style={{
+              background: "#6f68d1",
+              color: "#fff",
             }}
           />
         </Suspense>

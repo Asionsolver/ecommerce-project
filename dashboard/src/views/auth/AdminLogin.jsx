@@ -1,8 +1,10 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import logo from "../../assets/images/logo.png";
 import { useDispatch, useSelector } from "react-redux";
-import { admin_login } from "../../store/Reducers/authReducer";
+import { admin_login, messageClear } from "../../store/Reducers/authReducer";
 import { PropagateLoader } from "react-spinners";
+import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 const AdminLogin = () => {
   const [state, setState] = useState({
@@ -12,7 +14,9 @@ const AdminLogin = () => {
 
   const dispatch = useDispatch();
 
-  const { loader } = useSelector((state) => state.auth);
+  const navigate = useNavigate();
+
+  const { loader, errorMessage, successMessage } = useSelector((state) => state.auth);
 
   const inputHandler = (e) => {
     setState({ ...state, [e.target.name]: e.target.value });
@@ -30,7 +34,19 @@ const AdminLogin = () => {
     alignItems: "center",
     margin: "0 auto",
     height: "24px",
-  }
+  };
+
+  useEffect(() => {
+    if (errorMessage) {
+      toast.error(errorMessage);
+      dispatch(messageClear());
+    }
+    if (successMessage) {
+      toast.success(successMessage);
+      dispatch(messageClear());
+      navigate("/");
+    }
+  }, [errorMessage, successMessage]);
   return (
     <div className="min-w-screen min-h-screen bg-soap flex justify-center items-center">
       <div className="w-[350px]  text-white p-2">
@@ -74,7 +90,11 @@ const AdminLogin = () => {
               disabled={loader ? true : false}
               className="w-full p-2 rounded-md bg-slate-800 text-white font-medium hover:shadow-blue-300 hover:shadow-lg px-7 py-2 mb-3"
             >
-              {loader ? <PropagateLoader color="#fff" cssOverride={overrideStyle} /> : "Login"}
+              {loader ? (
+                <PropagateLoader color="#fff" cssOverride={overrideStyle} />
+              ) : (
+                "Login"
+              )}
             </button>
           </form>
         </div>
