@@ -1,7 +1,8 @@
- import { useState } from "react";
+import { useState } from "react";
 import logo from "../../assets/images/logo.png";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { admin_login } from "../../store/Reducers/authReducer";
+import { PropagateLoader } from "react-spinners";
 
 const AdminLogin = () => {
   const [state, setState] = useState({
@@ -10,6 +11,8 @@ const AdminLogin = () => {
   });
 
   const dispatch = useDispatch();
+
+  const { loader } = useSelector((state) => state.auth);
 
   const inputHandler = (e) => {
     setState({ ...state, [e.target.name]: e.target.value });
@@ -20,6 +23,14 @@ const AdminLogin = () => {
     dispatch(admin_login(state));
     console.log(state);
   };
+
+  const overrideStyle = {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    margin: "0 auto",
+    height: "24px",
+  }
   return (
     <div className="min-w-screen min-h-screen bg-soap flex justify-center items-center">
       <div className="w-[350px]  text-white p-2">
@@ -59,9 +70,12 @@ const AdminLogin = () => {
               />
             </div>
 
-            <button className="w-full p-2 rounded-md bg-slate-800 text-white font-medium hover:shadow-blue-300 hover:shadow-lg px-7 py-2 mb-3">
-              Login
-            </button> 
+            <button
+              disabled={loader ? true : false}
+              className="w-full p-2 rounded-md bg-slate-800 text-white font-medium hover:shadow-blue-300 hover:shadow-lg px-7 py-2 mb-3"
+            >
+              {loader ? <PropagateLoader color="#fff" cssOverride={overrideStyle} /> : "Login"}
+            </button>
           </form>
         </div>
       </div>

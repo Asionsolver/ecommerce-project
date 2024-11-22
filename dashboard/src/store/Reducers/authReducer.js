@@ -16,13 +16,20 @@ export const admin_login = createAsyncThunk("auth/admin_login",
 export const authReducer = createSlice({
   name: "auth",
   initialState: {
-    isLoading: false,
+    loader: false,
     errorMessage: "",
     successMessage: "",
     userInfo: null,
   },
   reducers: ()=>{},
-  extraReducers: ()=>{}
+  extraReducers: (builder)=>{
+    builder.addCase(admin_login.pending, (state, {payload})=>{
+      state.loader = true;
+      state.errorMessage = "";
+      state.successMessage = "";
+      
+    })
+  }
 }); 
 
 // export const { loginStart, loginSuccess, loginFailure } = authReducer.actions;
