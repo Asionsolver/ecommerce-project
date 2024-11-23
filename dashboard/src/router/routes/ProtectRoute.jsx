@@ -1,9 +1,3 @@
-
-
-const ProtectRoute = () => {
-  return (
-    <div>ProtectRoute</div>
-  )
-}
-
-export default ProtectRoute
+export const ProtectRoute = () => {
+  return <div>ProtectRoute</div>;
+};
