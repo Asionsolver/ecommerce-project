@@ -3,6 +3,7 @@ const { responseReturn } = require("../utils/response");
 const bcrypt = require("bcrypt");
 const { createToken } = require("../utils/tokenCreate");
 class AuthControllers {
+  // admin login
   admin_login = async (req, res) => {
     // console.log(req.body);
     const { email, password } = req.body;
@@ -45,6 +46,23 @@ class AuthControllers {
         success: false,
         error: error.message,
       });
+    }
+  };
+
+  // get user
+  getUser = async (req, res) => {
+    const { id, role } = req;
+    try {
+      if (role === "admin") {
+        const user = await adminModel.findById(id);
+        responseReturn(res, 200, { userInfo: user });
+      } else {
+        console.log("Seller Info");
+        // responseReturn(res, 400, { success: false, error: "Unauthorized" });
+      }
+    } catch (error) {
+      console.log(error.message);
+      // responseReturn(res, 500, { success: false, error: error.message });
     }
   };
 }
