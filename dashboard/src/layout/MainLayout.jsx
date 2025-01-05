@@ -1,35 +1,20 @@
 import { Outlet } from "react-router-dom";
+import Header from "./Header";
+import Sidebar from "./Sidebar";
+import { useState } from "react";
 
 const MainLayout = () => {
+  const [showSidebar, setShowSidebar] = useState(false);
   return (
-    <div>
-      <h1>MainLayout</h1>
-      <Outlet />
+    <div className="bg-soap w-full min-h-screen">
+      <Header showSidebar={showSidebar} setShowSidebar={setShowSidebar} />
+      <Sidebar showSidebar={showSidebar} setShowSidebar={setShowSidebar} />
+
+      <div className="ml-0 lg:ml-[260px] pt-[95px] ">
+        <Outlet />
+      </div>
     </div>
   );
 };
 
 export default MainLayout;
-// import { Outlet } from "react-router-dom";
-
-// const MainLayout = () => {
-//   return (
-//     <div>
-//       <h1>MainLayout</h1>
-//       <ErrorBoundary>
-//         <Outlet />
-//       </ErrorBoundary>
-//     </div>
-//   );
-// };
-
-// const ErrorBoundary = ({ children }) => {
-//   try {
-//     return children;
-//   } catch (error) {
-//     console.error("Error rendering Outlet:", error);
-//     return <div>Something went wrong.</div>;
-//   }
-// };
-
-// export default MainLayout;

@@ -6,6 +6,8 @@ export default {
       colors: {
         soap: "#CDCAE9",
         violetBlue: "#6f68d1",
+        lavender: "#E6E7FB",
+        richBlack: "#030811",
       },
     },
   },
