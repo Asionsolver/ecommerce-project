@@ -135,7 +135,7 @@ const AdminDashboard = () => {
 
       <div className="w-full flex flex-wrap mt-7 ">
         <div className="w-full lg:w-7/12 lg:pr-3 ">
-          <div className="w-full bg-[#6a5fdf] p-4 rounded-md">
+          <div className="w-full bg-majorelleBlue p-4 rounded-md">
             <Charts
               options={state.options}
               series={state.series}
@@ -146,7 +146,7 @@ const AdminDashboard = () => {
         </div>
 
         <div className="w-full lg:w-5/12 lg:pr-4 mt-6 lg:mt-0 ">
-          <div className="w-full bg-[#6a5fdf] p-4 rounded-md text-lightGray">
+          <div className="w-full bg-majorelleBlue p-4 rounded-md text-lightGray">
             <div className="flex justify-between items-center">
               <h2 className="font-semibold text-lg text-lightGray pb-3">
                 Recent Seller Message
@@ -187,7 +187,7 @@ const AdminDashboard = () => {
         </div>
       </div>
 
-      <div className="bg-[#6a5fdf] w-full p-4 rounded-md mt-6">
+      <div className="bg-majorelleBlue w-full p-4 rounded-md mt-6">
         <div className="flex justify-between items-center">
           <h2 className="font-semibold text-lg text-lightGray">
             Recent Orders

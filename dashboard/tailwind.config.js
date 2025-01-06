@@ -9,6 +9,7 @@ export default {
         lavender: "#E6E7FB",
         richBlack: "#030811",
         lightGray: "#d0d2d5",
+        majorelleBlue: "#6A5FDF",
       },
     },
   },
