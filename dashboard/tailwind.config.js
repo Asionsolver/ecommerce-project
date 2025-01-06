@@ -8,6 +8,7 @@ export default {
         violetBlue: "#6f68d1",
         lavender: "#E6E7FB",
         richBlack: "#030811",
+        lightGray: "#d0d2d5",
       },
     },
   },
